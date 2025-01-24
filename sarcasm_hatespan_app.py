@@ -33,12 +33,12 @@ from nltk.stem import WordNetLemmatizer
 unique_sarcastic_words=['little', 'new', 'employee', 'job', 'human', 'report', 'self', 'tell', 'local', 'good', 'every', 'announces', 'study', 'dad', 'couple', 'get', 'parent', 'god', 'never', 'last', 'come', 'woman', 'day', 'million', 'doesnt', 'teen', 'entire', 'party', 'yearold', 'see', 'getting', 'friend', 'one', 'he', 'man', 'find', 'cant', 'office', 'hour', 'bush', 'area', 'around', 'enough', 'guy', 'minute', 'work', 'introduces', 'american', 'going', 'nation']
 unique_hate_speech_words=['life', 'yall', 'cunt', 'fucking', 'ya', 'bitch', 'lmao', 'bad', 'gonna', 'fuck', 'get', 'come', 'wit', 'damn', 'lil', 'dat', 'like', 'faggot', 'aint', 'cause', 'hoe', 'money', 'always', 'stop', 'yo', 'rt', 'eat', 'real', 'little', 'ill', 'nigga', 'tell', 'u', 'give', 'dont', 'dumb', 'wanna', 'retarded', 'fag', 'im', 'bout', 'as', 'ugly', 'dick', 'pussy', 'nigger', 'fuckin', 'shit', 'niggah', 'gotta']
 # Load and clean dataset for sarcasm
-df_sarcasm = pd.read_csv("/content/drive/MyDrive/Dataset/Sarcasm_Headlines_Dataset.csv")
+df_sarcasm = pd.read_csv("Sarcasm_Headlines_Dataset.csv")
 df_sarcasm['headline'] = df_sarcasm['headline'].apply(lambda x: re.sub('[%s]' % re.escape(string.punctuation), '', str(x).lower()))
 df_sarcasm['headline'] = df_sarcasm['headline'].apply(lambda x: ' '.join([lemmatizer.lemmatize(word) for word in x.split() if word not in stopword]))
 
 # Load and clean dataset for hate span
-df_hate_span = pd.read_csv("/content/drive/MyDrive/Dataset/twitter_data.csv")
+df_hate_span = pd.read_csv("twitter_data.csv")
 df_hate_span['tweet'] = df_hate_span['tweet'].apply(lambda x: re.sub('[%s]' % re.escape(string.punctuation), '', str(x).lower()))
 df_hate_span['tweet'] = df_hate_span['tweet'].apply(lambda x: ' '.join([lemmatizer.lemmatize(word) for word in x.split() if word not in stopword]))
 
