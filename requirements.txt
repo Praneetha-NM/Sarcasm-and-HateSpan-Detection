@@ -1,7 +1,6 @@
 pandas
 numpy
 seaborn
-re
 string
 nltk
 streamlit
